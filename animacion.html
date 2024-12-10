@@ -1,44 +1,59 @@
+<!DOCTYPE html>
 <html lang="cs">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=!, initial-scale=1.0">
-    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kámen, Papír, Nůžky</title>
     <style>
-        .wrapper {
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+        
+        .kongo{
+            height: 1500px;
+            aspect-ratio: 2/1;
+        }
+
+        .menu {
             display: flex;
-            align-items: center;
-            justify-content: center;
+            flex-direction: column;
+            gap: 20px;
         }
 
-        .k_kamen{
-            height: 50px;
-            width: 100px;
-            border: solid 2px black;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
+        .button {
+            border: 2px solid black;
+            padding: 10px 20px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            background-color: white;
+            transition: 0.3s ease-in-out;
+            translate: -2400px 0px;
         }
 
-        k_nuzky{
-            height: 200px;
-            width: 300px;
-            border: solid 2px black;
+        .blesk{
+            translate: 2500px;
         }
 
-        k_papir{
-            height: 200px;
-            width: 300px;
-            border: solid 2px black;
+        .button:hover {
+            background-color: #ddd;
         }
     </style>
 </head>
 <body>
-    <div class="wrapper">
-        <div class="k_kamen">Kámen</div>
-        <div class="k_nuzky">Nůžky</div>
-        <div class="k_papir">Papír</div>
+    <img class="blesk" src="bleskacek.png" alt="">
+    <img class="kongo" src="pozadi.png" alt="">
+    <div class="menu">
+        <div class="button">KÁMEN</div>
+        <div class="button">PAPÍR</div>
+        <div class="button">NŮŽKY</div>
     </div>
 </body>
 </html>
