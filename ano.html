@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blesk na hranici barev</title>
     <style>
-        * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+
+        *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html, body {
@@ -26,7 +27,7 @@ html, body {
     cursor: pointer;
     background-color: white;
     transition: 0.3s ease-in-out;
-    transform: rotate(360deg) scaleY(-1); /* Opraveno! */
+    transform: rotate(360deg) scaleY(-1);
     height: 100px;
     aspect-ratio: 1/2;
 }
@@ -52,7 +53,6 @@ html, body {
     background-color: #921b1b;
 }
 
-/* Rozdělení pozadí úhlopříčně */
 .background {
     position: relative;
     width: 100vw;
@@ -61,16 +61,15 @@ html, body {
     transform: scaleY(-1);
 }
 
-/* Blesk na hranici */
 .lightning {
         pointer-events: none;
         scale: 1.5;
         position: absolute;
-        width: 3000px; /* Pevná šířka */
-        height: 3000px; /* Pevná výška */
-        top: 25%; /* Střed stránky */
+        width: 3000px;
+        height: 3000px;
+        top: 25%;
         left: -47%;
-        transform: translate(-50%, -50%); /* Zarovná na střed */
+        transform: translate(-50%, -50%);
         background-repeat: no-repeat;
         background-size: contain;
         transform: scaleX(-1);
@@ -83,6 +82,7 @@ html, body {
     position: absolute;
     top: 30%;
     left: 14%;
+    animation: svato 5s alternate-reverse infinite;
 }
 
 .j {
@@ -91,7 +91,8 @@ html, body {
     transform: rotate(180deg);
     transform: scaleY(-1);
     top: 42.5%;
-    left: 65%;
+    left: 68%;
+    animation: jazykovani 3.5s alternate-reverse infinite;
 }
 
 .ob{
@@ -99,9 +100,9 @@ html, body {
     position: absolute;
     transform: rotate(180deg);
     top: 73%;
-    left: 69.8%;
+    left: 70.2%;
+    animation: obocko 5s alternate-reverse infinite;
 }
-
 .A {
     pointer-events: none;
     position: relative;
@@ -124,6 +125,7 @@ html, body {
     z-index: 2;
     bottom: 80%;
     right: 55%;
+    animation: mrakovani 4s infinite alternate;
 }
 
 @keyframes toceni {
@@ -137,6 +139,39 @@ html, body {
     }
     100% {
         translate: 50px -120px;
+    }
+}
+
+@keyframes jazykovani {
+    0% {
+        translate: -90px 10px;
+    }
+}
+
+@keyframes mrakovani {
+    0% {
+        translate: -30px 20px;
+    }
+    100% {
+        translate: 30px 20px;
+    }
+}
+
+@keyframes svato {
+    0% {
+        translate: 0px 10px;
+    }
+    100% {
+        translate: 0px -10px;
+    }
+}
+
+@keyframes obocko {
+    0% {
+        translate: 0px 5px;
+    }
+    100% {
+        translate: 0px -25px;
     }
 }
     </style>
