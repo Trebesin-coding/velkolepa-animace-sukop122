@@ -1,1 +1,325 @@
 Sem patří použité prompty
+
+ChatGPT said:
+ChatGPT
+Pokud chceš spustit animaci mraku (.M) po kliknutí pomocí JavaScriptu, můžeš manipulovat s CSS třídou nebo přímo měnit styly. Například:
+
+1. Přidání/odebrání třídy s animací
+Změnou tříd přes classList můžeš animaci spustit.
+
+Upravený HTML + CSS + JS:
+HTML (beze změny)
+
+CSS:
+Přidáš třídu animate s keyframes.
+
+css
+Copy code
+.animate {
+    animation: mrakovani 4s infinite alternate; /* Definuješ animaci */
+}
+JavaScript:
+
+javascript
+Copy code
+let mrak = document.querySelector(".M");
+
+mrak.addEventListener("click", function () {
+    mrak.classList.toggle("animate"); // Přidá/odebere animaci
+});
+2. Přímá úprava stylu animace přes JS
+Bez manipulace s třídou můžeš animaci aplikovat přímo.
+
+javascript
+Copy code
+let mrak = document.querySelector(".M");
+
+mrak.addEventListener("click", function () {
+    mrak.style.animation = "mrakovani 4s infinite alternate"; // Přidáš animaci
+});
+
+
+
+
+
+chci aby ten blesk byl pod mrakem
+ChatGPT said:
+ChatGPT
+Aby blesk (div s třídou lightning) byl pod mrakem (div s třídou M), stačí upravit pořadí prvků pomocí CSS vlastnosti z-index a pozicování.
+
+Řešení:
+Ujisti se, že oba prvky mají nastavené position (např. absolute nebo relative).
+Přidej z-index u mraku vyšší než u blesku.
+css
+Copy code
+.M {
+    position: absolute;
+    z-index: 2; /* Mrak má vyšší prioritu */
+}
+
+.lightning {
+    position: absolute;
+    z-index: 1; /* Blesk je pod mrakem */
+}
+Výsledek
+Mrak (.M) se zobrazí nad bleskem (.lightning). Pořadí určuje hodnota z-index – čím vyšší číslo, tím více vpředu.
+
+
+bro jak mam udelat aby ten blesk nemenil velikost pri zmensovani/zvetsovani strANKY
+ChatGPT said:
+ChatGPT
+Aby se blesk nepřizpůsoboval velikosti stránky, můžeš použít pevné jednotky pro rozměry a pozici blesku (např. px místo procent nebo viewportových jednotek jako vw a vh). Takto zajistíš, že jeho velikost a pozice zůstanou konstantní bez ohledu na velikost okna. Taky uprav stylování img, aby zůstal fixní.
+
+Zde je opravený kód:
+
+Oprava:
+html
+Copy code
+<style>
+    /* Ostatní styly beze změny */
+
+    /* Blesk na hranici */
+    .lightning {
+        position: absolute;
+        width: 300px; /* Pevná šířka */
+        height: 300px; /* Pevná výška */
+        top: 50%; /* Střed stránky */
+        left: 50%;
+        transform: translate(-50%, -50%); /* Zarovná na střed */
+        background-repeat: no-repeat;
+        background-size: contain;
+        overflow: hidden;
+        animation: chveni 1s infinite;
+    }
+
+    .lightning img {
+        width: 100%; /* Obraz se přizpůsobí rozměrům divu */
+        height: 100%;
+        object-fit: contain; /* Zachová poměr stran obrázku */
+    }
+
+    @keyframes chveni {
+        50% {
+            transform: translate(-50%, -50%) translate(-20px, 10px); /* Posun při animaci */
+        }
+        100% {
+            transform: translate(-50%, -50%) translate(20px, -10px);
+        }
+    }
+</style>
+Co to dělá:
+Pevná velikost blesku: Nastavil jsem pevné hodnoty width a height (300px jako příklad, uprav podle potřeby).
+Umístění do středu: Kombinace top: 50%, left: 50% a transform: translate(-50%, -50%) zajistí, že blesk bude vždy uprostřed stránky.
+Animace zachovává pevnou velikost: V animaci používám jen posun (translate) bez škálování.
+Tímto způsobem zůstane blesk stabilní, bez změn velikosti při zmenšování nebo zvětšování okna.
+
+
+
+
+
+Chat history
+
+
+ChatGPT
+ChatGPT
+
+Explore GPTs
+Yesterday
+Previous 7 Days
+Previous 30 Days
+Upgrade plan
+More access to the best models
+
+ChatGPT
+
+Share
+
+User
+You said:
+Uploaded image
+Uploaded image
+bro jak udelat takovouhle fotku na celou obrazovku a aby na hranici mezi barvami byl tenhle blesk
+ChatGPT said:
+ChatGPT
+Pokud chceš vytvořit obrázek na celou obrazovku s hranicí mezi barvami a bleskem podobným tvému příkladu, můžeš postupovat takto:
+
+1. Vytvoření barevného pozadí s hranicí:
+Použij grafický editor jako GIMP, Photoshop nebo online nástroje (např. Photopea).
+Vytvoř nový projekt s rozlišením své obrazovky (např. 1920x1080).
+Rozděl pozadí úhlopříčně na dvě barvy (např. modrou a červenou) pomocí nástroje pro výběr a vyplnění barev.
+2. Přidání blesku na hranici barev:
+K vytvoření bleskového efektu můžeš:
+Ruční kreslení: Pomocí nástroje Štětec nebo Pero nakresli „klikatou“ čáru podél hranice mezi barvami.
+Filtry nebo efekty: Například v GIMPu můžeš použít Filtr -> Vykreslit -> Blesk a pak jej umístit na hranici.
+Barvu blesku nastav na žlutou nebo jinou kontrastní barvu a přidej lehký světelný efekt (např. rozostření nebo záři).
+3. Export obrázku a zobrazení na celou obrazovku:
+Ulož obrázek jako PNG nebo JPG.
+Otevři obrázek v prohlížeči obrázků (např. IrfanView, nebo i standardní prohlížeč ve Windows).
+Stiskni F11 pro zobrazení obrázku na celou obrazovku.
+Alternativa pomocí programování:
+Pokud používáš Python a knihovnu jako Pygame nebo Tkinter, můžeš naprogramovat generování tohoto efektu:
+
+Rozdělení obrazovky na dvě barvy.
+Generování „klikaté“ linie blesku pomocí náhodných bodů podél hranice.
+Pokud potřebuješ konkrétní kód v Pythonu pro tento účel, dej mi vědět!
+
+
+
+
+
+
+You said:
+potrebuju to v css a html dik
+ChatGPT said:
+ChatGPT
+Pokud chceš vytvořit podobný efekt v HTML a CSS, kde obrazovka je rozdělena úhlopříčně na dvě barvy a na hranici je blesk, můžeš postupovat takto:
+
+Kód HTML a CSS
+HTML:
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blesk na hranici barev</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="background">
+        <div class="lightning"></div>
+    </div>
+</body>
+</html>
+CSS (soubor styles.css):
+/* Resetování stylů */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Rozdělení pozadí úhlopříčně */
+.background {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(to bottom right, #00aaff 49.9%, #ff0000 50%);
+}
+
+/* Blesk na hranici */
+.lightning {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom right,
+        transparent 49.9%,
+        yellow 50%,
+        transparent 50.1%
+    );
+    mask-image: url('https://www.freeiconspng.com/uploads/lightning-png-29.png'); /* Nahraď link lepší bleskovou maskou */
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+Vysvětlení:
+Rozdělení pozadí úhlopříčně:
+
+linear-gradient vytváří dvě barvy (modrá a červená) rozdělené přesně na úhlopříčku.
+49.9% a 50% zajistí, že barvy přecházejí ostře na hranici.
+Přidání blesku:
+
+linear-gradient v pseudo-efektu může pomoci, ale pro realistický blesk je nejlepší použít maskovací obrázek blesku (PNG s průhledností).
+background-repeat: no-repeat a background-size: contain zajistí, že blesk bude správně škálovat na hranici.
+Výsledek:
+Celá obrazovka bude mít dvě barvy rozdělené úhlopříčně.
+Na této hranici bude bleskový efekt, který můžeš upravit přes obrázek nebo další efekty CSS.
+Pokud chceš pouze CSS „kreslený blesk“, tak na hranici bude nutné definovat klikatou čáru ručně pomocí clip-path nebo SVG. Dej mi vědět, pokud chceš ještě konkrétnější příklad s tímto!
+
+
+
+
+
+
+You said:
+jak se dela mirror zobrazeni obrazku
+ChatGPT said:
+ChatGPT
+Mirror (zrcadlové) zobrazení obrázku v CSS je snadné. Můžeš ho dosáhnout pomocí transformace.
+
+Horizontální zrcadlení (podél osy Y)
+Pokud chceš obrázek převrátit vodorovně, použij scaleX(-1):
+
+HTML:
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zrcadlení obrázku</title>
+    <style>
+        img {
+            transform: scaleX(-1);
+        }
+    </style>
+</head>
+<body>
+    <img src="example.jpg" alt="Obrázek">
+</body>
+</html>
+Vertikální zrcadlení (podél osy X)
+Pro převrácení obrázku svisle použij scaleY(-1):
+
+CSS:
+img {
+    transform: scaleY(-1);
+}
+Kombinace obou os (úplné převrácení)
+Pokud chceš obrázek převrátit jak vodorovně, tak svisle, můžeš kombinovat obě hodnoty:
+
+CSS:
+img {
+    transform: scale(-1, -1);
+}
+Přidání animace zrcadlení
+Pokud chceš, aby efekt zrcadlení proběhl plynule (například při najetí myší), přidej animaci:
+
+CSS s animací:
+img {
+    transition: transform 0.5s ease;
+}
+
+img:hover {
+    transform: scaleX(-1);
+}
+Zrcadlení pomocí flip v CSS
+Alternativně můžeš vytvořit efekt zrcadlení pomocí transform: rotateY(180deg) pro obrázek uvnitř kontejneru:
+
+CSS:
+.mirror {
+    transform: rotateY(180deg);
+}
+HTML:
+<img src="example.jpg" alt="Obrázek" class="mirror">
+Vyber si způsob, který nejvíc odpovídá tvému cíli. Pokud budeš chtít něco složitějšího (např. zrcadlový efekt na pozadí nebo s animací), dej vědět!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
