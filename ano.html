@@ -12,7 +12,7 @@
   box-sizing: border-box;
 }
 
-html, body {
+body {
     height: 100%;
     overflow: hidden;
 }
@@ -68,7 +68,7 @@ html, body {
         width: 3000px;
         height: 3000px;
         top: 25%;
-        left: -47%;
+        left: -35.8%;
         transform: translate(-50%, -50%);
         background-repeat: no-repeat;
         background-size: contain;
@@ -91,24 +91,33 @@ html, body {
     transform: rotate(180deg);
     transform: scaleY(-1);
     top: 42.5%;
-    left: 68%;
-    animation: jazykovani 3.5s alternate-reverse infinite;
+    left: 69%;
+    animation: jazykovani 0.1s alternate-reverse infinite;
 }
 
 .ob{
     z-index: 5;
     position: absolute;
     transform: rotate(180deg);
-    top: 73%;
-    left: 70.2%;
+    top: 71%;
+    left: 71.5%;
     animation: obocko 5s alternate-reverse infinite;
 }
 .A {
-    pointer-events: none;
+    background-color: pink;
+    border-radius: 50%;
+    border: 7px solid black;
+    height: 470px;
+    aspect-ratio: 1/1;
     position: relative;
     z-index: 1;
-    top: -6%;
-    left: 16%;
+    top: -4%;
+    left: 15.5%;
+    transition: background-color 1s;
+}
+
+.A:hover {
+    background-color: gold;
 }
 
 .B {
@@ -120,19 +129,18 @@ html, body {
 }
 
 .M {
-    pointer-events: none;
     position: absolute;
     z-index: 2;
     bottom: 80%;
-    right: 55%;
+    right: 56%;
     animation: mrakovani 4s infinite alternate;
 }
 
-@keyframes toceni {
-    100% {
-        rotate: 360deg
-    }
-}
+.animate {
+    animation: mrakhyb 2s 1;
+}   
+
+
 @keyframes chveni {
     50% {
         translate: -100px 10px;
@@ -144,7 +152,7 @@ html, body {
 
 @keyframes jazykovani {
     0% {
-        translate: -90px 10px;
+        translate: -40px 2px;
     }
 }
 
@@ -154,6 +162,24 @@ html, body {
     }
     100% {
         translate: 30px 20px;
+    }
+}
+
+@keyframes mrakhyb {
+    0% {
+        translate: 1px 60px;
+    }
+    20% {
+        translate: -600px 60px;
+    }
+    60% {
+        translate: -600px -200px;
+    }
+    80% {
+        translate: 1px -200px;
+    }
+    100% {
+        translate: 1px 60px;
     }
 }
 
@@ -182,9 +208,17 @@ html, body {
         <div class="sv"><img src="svatozar.png" alt=""></div>
         <div class="j"><img src="jazyk.png" alt=""></div>
         <div class="B"><img src="B.png" alt=""></div>
-        <div class="A"><img src="A.png" alt=""></div>
+        <div class="A"></div>
         <div class="M"><img src="mrak.png" alt=""></div>
         <div class="lightning"><img src="bleskacek.png" alt=""></div>
     </div>
+
+    <script>
+        let mrak = document.querySelector(".M")
+
+        mrak.addEventListener("click",function() {
+            mrak.classList.toggle("animate");
+        });
+    </script>
 </body>
 </html>
